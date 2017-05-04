@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: połączenie z api, ktore sprawdza czy jestesmy zalogowani
         // jestesmy zalogowani
-       /* if(success != null) {
+        if(success != null) {
             success.run();
-        }*/
-        // nie jestesmy zalogowani
-        if(failed != null) {
-            failed.run();
         }
+        // nie jestesmy zalogowani
+        /*if(failed != null) {
+            failed.run();
+        }*/
 
     }
 

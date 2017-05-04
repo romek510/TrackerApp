@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBg01"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_select_type_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingTop="@dimen/select_activity_list_padding_left_right"
+        android:paddingBottom="@dimen/select_activity_list_padding_left_right"
+        android:paddingRight="@dimen/select_activity_list_padding_left_right"
+        android:paddingLeft="@dimen/default_padding">
+
+        <RelativeLayout
+            android:id="@+id/ll_select_type_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/iv_activity_type_image"
+                android:layout_width="@dimen/select_activity_icon_width_height"
+                android:layout_height="@dimen/select_activity_icon_width_height"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/tv_activity_type_fullname"
+                android:textColor="@color/colorBlueGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_toRightOf="@+id/iv_activity_type_image" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Switch
+                android:id="@+id/switch_gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/colorBlueGrey"
+                android:text="GPS " />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/turn_on_gps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_orange"
+            android:text="@string/tracker_fragment_map_turn_on"
+            android:textColor="@color/colorWhite" />
+
+        <RelativeLayout
+            android:padding="@dimen/space_left_right_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:textColor="@color/colorWhite">
+
+            <ImageView
+                android:id="@+id/btn_start_tracking"
+                android:padding="@dimen/default_padding"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/icon_tracker_play"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--<fragment xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_btns"
+        android:layout_below="@+id/rl_select_type_activity"
+        tools:context="com.example.mapwithmarker.MapsMarkerActivity" />-->
+
+    <ListView
+        android:id="@+id/lv_activity_types"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:background="@color/colorWhite"
+        android:clipToPadding="false"
+        android:divider="@color/colorWhite"
+        android:dividerHeight="0dp"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:paddingBottom="@dimen/select_activity_list_item_margin_top_bottom"
+        android:scrollbarStyle="outsideOverlay" />
+
+
+</RelativeLayout>

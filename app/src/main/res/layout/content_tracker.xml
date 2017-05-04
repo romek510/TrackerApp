@@ -13,4 +13,10 @@
     tools:context="trackerapp.trackerapp.TrackerActivity"
     tools:showIn="@layout/app_bar_tracker">
 
+    <LinearLayout
+        android:id="@+id/fragment_view"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>

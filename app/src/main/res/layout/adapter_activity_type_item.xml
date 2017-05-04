@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/at_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/select_activity_list_padding_left_right"
+    android:paddingRight="@dimen/select_activity_list_padding_left_right">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/select_activity_list_item_margin_top_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:descendantFocusability="blocksDescendants">
+
+        <RelativeLayout
+            android:id="@+id/rr_item_block"
+            android:background="@drawable/activity_type_block"
+            android:padding="@dimen/location_listing_item_padding_top_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/select_activity_icon_width_height"
+                android:layout_height="@dimen/select_activity_icon_width_height" />
+
+            <LinearLayout
+                android:layout_toRightOf="@+id/iv_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="false"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/sliding_menu_header_icon_padding_left_right"
+                android:paddingRight="@dimen/users_listing_item_padding_left_right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_fullname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorBlueDark"
+                    android:textSize="@dimen/users_listing_item_fullname_text_size" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

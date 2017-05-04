@@ -21,4 +21,63 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="tracker_fragment_map_title">Start activity</string>
+    <string name="tracker_fragment_map_turn_on">Turn on the gps</string>
+    <string name="tracker_fragment_map_start_tracking">Start Tracking</string>
+
+    <string name="activity_fullname_cycling_road">Road Cycling</string>
+    <string name="activity_fullname_running">Running</string>
+    <string name="activity_fullname_cycling_mountain">Mountain Cycling</string>
+    <string name="activity_fullname_cooking">Cooking</string>
+    <string name="activity_fullname_running_treadmill">Treadmill</string>
+    <string name="activity_fullname_aerobic">Aerobic</string>
+    <string name="activity_fullname_walking">Walking</string>
+    <string name="activity_fullname_cycling_stationary">Stationary cycling</string>
+    <string name="activity_fullname_strength_training">Strength training</string>
+    <string name="activity_fullname_rollers">Rollres</string>
+    <string name="activity_fullname_workout_elliptical">Eliptical workout</string>
+    <string name="activity_fullname_yoga">Joga</string>
+    <string name="activity_fullname_swimming">Swimming</string>
+    <string name="activity_fullname_pilates">Pilates</string>
+    <string name="activity_fullname_nordic_walking">Nordic walking</string>
+    <string name="activity_fullname_stretching">Stretching</string>
+    <string name="activity_fullname_any">Freestyle</string>
+    <string name="activity_fullname_cycling">Cycling</string>
+    <string name="activity_fullname_arc_trainer">Arc Trainer</string>
+    <string name="activity_fullname_barre">Barre</string>
+    <string name="activity_fullname_bootcamp">Boot camp</string>
+    <string name="activity_fullname_circuit_training">Circuit training</string>
+    <string name="activity_fullname_core_strengthening">Core strengthening</string>
+    <string name="activity_fullname_crossfit">Crossfit</string>
+    <string name="activity_fullname_dance">Dance</string>
+    <string name="activity_fullname_downhill_skiing">Downhill skiing</string>
+    <string name="activity_fullname_group_workout">Group workout</string>
+    <string name="activity_fullname_hiking">Hiking</string>
+    <string name="activity_fullname_meditation">Meditation</string>
+    <string name="activity_fullname_rowing">Rowing</string>
+    <string name="activity_fullname_skating">Skating</string>
+    <string name="activity_fullname_snowboarding">Snowboarding</string>
+    <string name="activity_fullname_stairmaster">Stairmaster</string>
+    <string name="activity_fullname_wheelchair">Wheelchair</string>
+    <string name="activity_fullname_xc_skiing">Cross country skiing</string>
+    <string name="activity_fullname_zumba">Zumba</string>
+    <string name="activity_fullname_other">Other</string>
+    <string name="activity_fullname_boxing">Boxing</string>
+    <string name="activity_fullname_spinning">Spinning</string>
+    <string name="activity_fullname_badminton">Badminton</string>
+    <string name="activity_fullname_basketball">Bascetball</string>
+    <string name="activity_fullname_beach_volleyball">Beach Volleyball</string>
+    <string name="activity_fullname_football">Football</string>
+    <string name="activity_fullname_golf">Golf</string>
+    <string name="activity_fullname_horse_riding">Horse riding</string>
+    <string name="activity_fullname_handball">Handball</string>
+    <string name="activity_fullname_kayaking">Kayaking</string>
+    <string name="activity_fullname_martial_arts">Martial Arts</string>
+    <string name="activity_fullname_ping_pong">Ping Pong</string>
+    <string name="activity_fullname_rugby">Rugby</string>
+    <string name="activity_fullname_squash">Squash</string>
+    <string name="activity_fullname_tennis">Tennis</string>
+    <string name="activity_fullname_trampoline">Trampoline</string>
+    <string name="activity_fullname_volleyball">Volleyball</string>
 </resources>
