@@ -3,6 +3,10 @@ package trackerapp.trackerapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -19,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,8 +34,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import cz.msebera.android.httpclient.Header;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -38,6 +55,9 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    private LoginActivity self;
+    private AlertDialog ad;
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -66,6 +86,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        self = this;
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -159,35 +182,86 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
+        final ProgressDialog progress = new ProgressDialog(self);
+        progress.setTitle(getResources().getString(R.string.checking_log_in));
+        progress.setMessage(getResources().getString(R.string.wait_for_checking_log_in));
 
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
-        }
 
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-        }
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.addHeader("Content-Type", "application/json");
+        client.addHeader("Accept", "application/json");
+        final RequestParams params = new RequestParams();
+
+        email = "nocere7";
+        password = "123456789";
+
+        params.put("Username", email + "");
+        params.put("Password", password + "");
+        /*params.put("client_secret", getKey("client_secret"));
+        params.put("client_id", domain);
+        params.put("grant_type", getKey("grant_type"));*/
+
+
+        String url = "https://trackerserver.apphb.com/api/auth/login";
+
+
+        progress.show();
+
+        new android.os.Handler().postDelayed(new Runnable() {
+            public void run() {
+                progress.cancel();
+                Intent intent = new Intent(self, TrackerActivity.class);
+                self.finish();
+                self.startActivity(intent);
+            }
+        }, 2000);
+
+        /*client.post(url, params, new BaseJsonHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+                progress.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
+                progress.dismiss();
+
+                try {
+                    JSONArray json = new JSONArray(rawJsonResponse);
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Object errorResponse) {
+                progress.dismiss();
+
+                String title = null, message = null;
+
+                title = getResources().getString(R.string.incorrect_login_title);
+                message = getResources().getString(R.string.incorrect_login_desc);
+
+                ad = new AlertDialog.Builder(self)
+                        .setTitle(title)
+                        .setMessage(message)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
+            }
+
+            @Override
+            protected Object parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                Log.e("rawJson", rawJsonData);
+                return null;
+            }
+
+        });*/
     }
 
     private boolean isEmailValid(String email) {
@@ -345,6 +419,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public void showDialogIncorrectLogin() {
+        ad = new AlertDialog.Builder(self)
+                .setTitle(getResources().getString(R.string.incorrect_login_title))
+                .setMessage(getResources().getString(R.string.incorrect_login_desc))
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
 
