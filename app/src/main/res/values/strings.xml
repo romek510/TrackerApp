@@ -10,8 +10,8 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -80,4 +80,9 @@
     <string name="activity_fullname_tennis">Tennis</string>
     <string name="activity_fullname_trampoline">Trampoline</string>
     <string name="activity_fullname_volleyball">Volleyball</string>
+
+    <string name="checking_log_in">Login in progres</string>
+    <string name="wait_for_checking_log_in">Checking data</string>
+    <string name="incorrect_login_title">Login error</string>
+    <string name="incorrect_login_desc">The given data is incorrect</string>
 </resources>
