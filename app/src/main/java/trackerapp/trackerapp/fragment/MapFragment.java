@@ -1,9 +1,14 @@
 package trackerapp.trackerapp.fragment;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +23,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+
 import trackerapp.trackerapp.R;
 import trackerapp.trackerapp.adapter.ListActivityTypeAdapter;
 import trackerapp.trackerapp.model.ActivityModelDTO;
@@ -25,11 +31,23 @@ import trackerapp.trackerapp.model.TypeModel;
 import trackerapp.trackerapp.service.ActivityService;
 import trackerapp.trackerapp.service.GPSTracker;
 
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
+
 /**
  * Created by Krystian on 04.05.2017.
  */
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     public static final String PREFERENCES_TRACKER_NAME = "tracker";
 
@@ -50,6 +68,9 @@ public class MapFragment extends Fragment {
     private TextView tvActivityTypeFullname;
     private Switch gpsSwitch;
 
+    private GoogleMap mMap;
+
+
     public static MapFragment newInstance() {
         return new MapFragment();
     }
@@ -58,6 +79,11 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         preferences = getActivity().getSharedPreferences(PREFERENCES_TRACKER_NAME, 0);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.main_branch_map);
+        mapFragment.getMapAsync(this);
+
+
 
         // elements
         btnStart = (ImageView) rootView.findViewById(R.id.btn_start_tracking);
@@ -123,8 +149,20 @@ public class MapFragment extends Fragment {
         // Set default activity type
         setDefaultSettings();
 
+
         return rootView;
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng UCA = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(UCA).title("YOUR TITLE")).showInfoWindow();
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA,17));
+
+    }
+
 
     private void buildListView() {
         rrSelectTypeActivity.setOnClickListener(new View.OnClickListener() {
